@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css'
 
 export default function Home({list}) {
@@ -13,11 +14,15 @@ export default function Home({list}) {
           Filmes em destaque
         </h1>
 
+        <Link href="/busca">Ir para a busca</Link>
+
         <ul>
           {list.map(item=>(
             <li>
-              <img src={`https://image.tmdb.org/t/p/original${item.poster_path}`} width="150" /> <br/>
-              {item.title}
+              <a href={`/movie/${item.id}`}>
+                <img src={`https://image.tmdb.org/t/p/original${item.poster_path}`} width="150" /> <br/>
+                {item.title}
+              </a>
             </li>
           ))}
         </ul>
